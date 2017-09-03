@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Login Log</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <!---CSS Files-->
+  <link rel="stylesheet" href="css/master.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <!---jQuery Files-->
+  <script src="js/jquery-1.7.1.min.js"></script>
+  <script src="js/jquery-ui-1.8.17.min.js"></script>
+  <script src="js/styler.js"></script>
+  <script src="js/jquery.tipTip.js"></script>
+  <script src="js/colorpicker.js"></script>
+  <script src="js/sticky.full.js"></script>
+  <script src="js/global.js"></script>
+  <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+
+  <script src="js/LogShow.js"></script>
+  <script src="js/check.js"></script>
+  <script src="js/VisitCollect.js"></script>
+  <script src="js/cookie.js"></script>
+    <script src="js/log4javascript.js"></script>
+    <script src="js/log4jsService.js"></script>
+  <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+ <!---Fonts-->
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <!--[if lte IE 8]>
+  <script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="top-bar">
+      <ul id="nav">
+          <li>
+              <ul id="top-nav">
+                  <li class="nav-item">
+                      <a href="#"><img src="img/nav/tb-active.png" alt="" /><p>Login Log</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="LoginLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>LoginLog Analytics</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="SystemLog.html"><img src="img/nav/tb.png" alt="" /><p>System Log</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="SystemLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>SystemLog Analytics</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="VisitLog.html"><img src="img/nav/tb.png" alt="" /><p>Visit Log</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="VisitLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>VisitLog Analytics</p></a>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#"><img src="img/nav/tb.png" alt="" /><p>Operation Log</p></a>
+                      <ul class="sub-nav">
+                          <li><a href="LinearLog.html">Linear</a></li>
+                          <li><a href="VolcanoLog.html">Volcano</a></li>
+                          <li><a href="MountainLog.html">Mountain</a></li>
+                      </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a href="#"><img src="img/nav/anlt.png" alt="" /><p>OperationLog Analytics</p></a>
+                      <ul class="sub-nav">
+                          <li><a href="LinearLogAnalytics.html">Linear Analytics</a></li>
+                          <li><a href="VolcanoLogAnalytics.html">Volcano Analytics</a></li>
+                          <li><a href="MountainLogAnalytics.html">Mountain Analytics</a></li>
+                      </ul>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+  </div>
+
+  <!--- CONTENT AREA -->
+
+
+  <div class="content container_12">
+
+      <div class="box grid_12 search_input">
+          <table>
+              <tr>
+                  <td>Input Account:</td>
+                  <td>
+                      <input type="text" name="account" id="account" onblur="checkAccount()">
+                  </td>
+
+                  <td>Input IP:</td>
+                  <td>
+                      <input type="text" name="ip" id="ip" onblur="checkIP()">
+                  </td>
+
+                  <td>Select LoginType:</td>
+                  <td>
+                      <select name="content" id="content">
+                          <option value=""></option>
+                          <option value ="Login_Successfully">Login Successfully</option>
+                          <option value ="Logout_Successfully">Logout Successfully</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>Select BeginDate:</td>
+                  <td>
+                      <input type="date" name="beginDate" id="beginDate" onblur="checkDate()">
+                  </td>
+
+                  <td>Select EndDate:</td>
+                  <td>
+                      <input type="date" name="endDate" id="endDate" onblur="checkDate()">
+                  </td>
+
+                 <td>
+                     <button id="showTable" class="input-head" >Search</button>
+                 </td>
+                  <td></td>
+              </tr>
+          </table>
+      </div>
+      <div class="box grid_12">
+        <div class="box-head"><h2>Login Log Data Table</h2></div>
+
+        <div class="box-content no-pad">
+          <table id="dt3" class="display">
+            <thead>
+            <tr>
+              <th class="NO" ></th>
+              <th class="Rank" ></th>
+              <th class="Account" ></th>
+              <th class="IP" ></th>
+              <th class="DateTime" ></th>
+              <th class="Content" ></th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th class="NO" ></th>
+                <th class="Rank" ></th>
+                <th class="Account" ></th>
+                <th class="IP" ></th>
+                <th class="DateTime" ></th>
+                <th class="Content" ></th>
+            </tr>
+            </tfoot>
+            <tbody>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+
+  </div>
+
+<div class="footer">
+  <p>Powered by ClickGwas</p>
+</div>
+
+</body>
+</html>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    var cip = returnCitySN["cip"];
+    var city = returnCitySN["cname"];
+    city=isChinese(city);
+</script>
+<script>
+    var args;
+    function collectArgs() {
+        addCookie("token","122334234fsdafdsf",1);
+        var token = getCookie("token");   //  在本地中禁止获取cookies，所以先用字符串代替
+        token = "122334234fsdafdsf";
+
+        var account = $("#account").val().trim();
+        var ip = $("#ip").val().trim();
+        var beginDate = ChangeIntoMilliSeconds($("#beginDate").val());
+        var endDate = ChangeIntoMilliSeconds($("#endDate").val());
+        var content = $("#content").val();
+
+        var originArgs=[account,ip,beginDate,endDate,content,token];
+        return originArgs;
+    }
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            var type = "table";    //   用来标识绘制图的类型
+            args=collectArgs();
+            args.unshift(type);
+            log.Operate.getLogData(args);
+        }
+    };
+    $("#showTable").click(function () {
+        var type = "table";    //   用来标识绘制图的类型
+        args=collectArgs();
+        args.unshift(type);
+        log.Operate.getLogData(args);
+    });
+
+</script>

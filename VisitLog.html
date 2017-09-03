@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Visit Log</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!---CSS Files-->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <!---jQuery Files-->
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-ui-1.8.17.min.js"></script>
+    <script src="js/jquery.tipTip.js"></script>
+    <script src="js/colorpicker.js"></script>
+    <script src="js/sticky.full.js"></script>
+    <script src="js/global.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+    <script src="js/VisitCollect.js"></script>
+    <script src="js/LogShow.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/cookie.js"></script>
+    <link href="css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <!---Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+<div class="top-bar">
+    <ul id="nav">
+        <li>
+            <ul id="top-nav">
+                <li class="nav-item">
+                    <a href="LoginLog.html"><img src="img/nav/tb.png" alt="" /><p>Login Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="LoginLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>LoginLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="SystemLog.html"><img src="img/nav/tb.png" alt="" /><p>System Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="SystemLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>SystemLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/tb-active.png" alt="" /><p>Visit Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="VisitLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>VisitLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/tb.png" alt="" /><p>Operation Log</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLog.html">Linear</a></li>
+                        <li><a href="VolcanoLog.html">Volcano</a></li>
+                        <li><a href="MountainLog.html">Mountain</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/anlt.png" alt="" /><p>OperationLog Analytics</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLogAnalytics.html">Linear Analytics</a></li>
+                        <li><a href="VolcanoLogAnalytics.html">Volcano Analytics</a></li>
+                        <li><a href="MountainLogAnalytics.html">Mountain Analytics</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!--- CONTENT AREA -->
+
+
+<div class="content container_12">
+
+    <div class="box grid_12 search_input3">
+        <table>
+            <tr>
+                <td>Input Account:</td>
+                <td>
+                    <input type="text" name="account" id="account"  onblur="checkAccount()">
+                </td>
+                <td>Input IP:</td>
+                <td>
+                    <input type="text" name="ip" id="ip"  onblur="checkIP()">
+                </td>
+                <td>Select Page:</td>
+                <td>
+                    <select id="page" name="page">
+                        <option value=""></option>
+                        <option value="HomePage">HomePage</option>
+                        <option value="DataAnalysis">DataAnalysis</option>
+                        <option value="BeeSwarmByGene">BeeSwarmByGene</option>
+                        <option value="BeeSwarmByCancer">BeeSwarmByCancer</option>
+                        <option value="Mountain">Mountain</option>
+                        <option value="Manhattan">Manhattan</option>
+                        <option value="Linear">Linear</option>
+                        <option value="SubmitData">SubmitData</option>
+                        <option value="Demo">Demo</option>
+                        <option value="Forum">Forum</option>
+                        <option value="Papers">Papers</option>
+                        <option value="AboutUs">AboutUs</option>
+                        <option value="PI">PI</option>
+                        <option value="LabMember">LabMember</option>
+                    </select>
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Select BeginDate:</td>
+                <td>
+                    <input type="date" name="beginDate" id="beginDate" onblur="checkDate()">
+                </td>
+                <td>Select EndDate:</td>
+                <td>
+                    <input type="date" name="endDate" id="endDate" onblur="checkDate()">
+                </td>
+                <td>Select Browser:</td>
+                <td>
+                    <select id="browser" name="browser">
+                        <option value=""></option>
+                        <option value="Chrome">Chrome</option>
+                        <option value="Firefox">Firefox</option>
+                        <option value="Safari">Safari</option>
+                        <option value="Opera">Opera</option>
+                        <option value="IE">IE</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </td>
+                <td>
+                    <button id="showTable" class="input-head">Search</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="box grid_12">
+        <div class="box-head"><h2>Visit Log Data Table</h2></div>
+
+        <div class="box-content no-pad">
+            <table id="dt3" class="display">
+                <thead>
+                <tr>
+                    <th class="NO3" ></th>
+                    <th class="Rank3" ></th>
+                    <th class="Account3" ></th>
+                    <th class="IP3" ></th>
+                    <th class="Page3" ></th>
+                    <th class="Status3" ></th>
+                    <th class="LoginTime3" ></th>
+                    <th class="LogoutTime3" ></th>
+                    <th class="StayTime3"></th>
+                    <th class="SourcePage3" ></th>
+                    <th class="Browser3" ></th>
+                </tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <th class="NO3" ></th>
+                    <th class="Rank3" ></th>
+                    <th class="Account3" ></th>
+                    <th class="IP3" ></th>
+                    <th class="Page3" ></th>
+                    <th class="Status3" ></th>
+                    <th class="LoginTime3" ></th>
+                    <th class="LogoutTime3" ></th>
+                    <th class="StayTime3"></th>
+                    <th class="SourcePage3" ></th>
+                    <th class="Browser3" ></th>
+                </tr>
+                </tfoot>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p>Powered by ClickGwas</p>
+</div>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    var cip = returnCitySN["cip"];
+    var city = returnCitySN["cname"];
+    city=isChinese(city);
+</script>
+<script>
+    function collectArgs() {
+        addCookie("token","122334234fsdafdsf",1);
+        var token = getCookie("token");   //  在本地中禁止获取cookies，所以先用字符串代替
+        token = "a";
+
+        var account = $("#account").val().trim();
+        var ip = $("#ip").val().trim();
+        var beginDate = ChangeIntoMilliSeconds($("#beginDate").val());
+        var endDate = ChangeIntoMilliSeconds($("#endDate").val());
+        var page = $("#page").val();
+        var browser = $("#browser").val();
+        var type = "table";    //   用来标识绘制图的类型
+        var args=[type,account,ip,beginDate,endDate,page,browser,token];
+        log.Operate.getLogData(args);
+    }
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            collectArgs();
+        }
+    };
+    $("#showTable").click(function () {
+        collectArgs();
+    });
+</script>
+
+</body>
+</html>
+
+

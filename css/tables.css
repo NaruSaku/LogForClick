@@ -1,0 +1,542 @@
+
+/* DataTables Styling */
+
+table { font-size: 12px; }
+
+table.dataTable {
+	margin: 0 auto;
+	clear: both;
+	width: 100%;
+}
+
+table.dataTable thead th {
+	padding: 3px 18px 3px 10px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+table.dataTable tfoot th {
+	padding: 3px 18px 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.dataTable td {
+	padding: 3px 10px;
+}
+
+table.dataTable td.center,
+table.dataTable td.dataTables_empty {
+	text-align: center;
+}
+
+table.dataTable tr.odd { background-color: #fff; }
+table.dataTable tr.even { background-color: #f6f6f6; }
+table.dataTable td { padding: 8px 10px; border-right: 1px solid #ccc; }
+table.dataTable tr.odd:hover, table.dataTable tr.even:hover { background-color: #ddd; }
+table.dataTable thead th { border-right: 1px solid #ccc; }
+table.dataTable thead th:last-of-type { border-right: none; }
+
+/* Commented out to simplify
+
+table.dataTable tr.odd td.sorting_1 { background-color: #D3D6FF; }
+table.dataTable tr.odd td.sorting_2 { background-color: #DADCFF; }
+table.dataTable tr.odd td.sorting_3 { background-color: #E0E2FF; }
+table.dataTable tr.even td.sorting_1 { background-color: #EAEBFF; }
+table.dataTable tr.even td.sorting_2 { background-color: #F2F3FF; }
+table.dataTable tr.even td.sorting_3 { background-color: #F9F9FF; }
+
+*/
+
+
+/*
+ * Table wrapper
+ */
+.dataTables_wrapper {
+	position: relative;
+	clear: both;
+	zoom: 1;
+}
+
+
+/*
+ * Page length menu
+ */
+.dataTables_length {
+	float: left;
+}
+
+
+/*
+ * Filter
+ */
+.dataTables_filter {
+	float: right;
+	text-align: right;
+}
+
+
+/*
+ * Table information
+ */
+.dataTables_info {
+	margin: 12px;
+	clear: both;
+	float: left;
+	color: #292929 !important;
+	text-shadow: 0 1px 0 #fff;
+	font-size: 10px;
+	font-weight: 400;
+}
+
+
+/*
+ * Pagination
+ */
+.dataTables_paginate {
+	margin-top: 6px;
+	float: right;
+	text-align: right;
+}
+
+/* Two button pagination - previous / next */
+.paginate_disabled_previous,
+.paginate_enabled_previous,
+.paginate_disabled_next,
+.paginate_enabled_next {
+	height: 19px;
+	float: left;
+	cursor: pointer;
+	color: #292929 !important;
+	text-shadow: 0 1px 0 #fff;
+}
+.paginate_disabled_previous:hover,
+.paginate_enabled_previous:hover,
+.paginate_disabled_next:hover,
+.paginate_enabled_next:hover {
+	text-decoration: none !important;
+}
+.paginate_disabled_previous:active,
+.paginate_enabled_previous:active,
+.paginate_disabled_next:active,
+.paginate_enabled_next:active {
+	outline: none;
+}
+
+.paginate_disabled_previous,
+.paginate_disabled_next {
+	color: #666 !important;
+}
+.paginate_disabled_previous,
+.paginate_enabled_previous {
+	padding-left: 23px;
+}
+.paginate_disabled_next,
+.paginate_enabled_next {
+	padding-right: 23px;
+	margin-left: 10px;
+}
+
+.paginate_enabled_previous { background: url('http://x10powered.com/errors/404.shtml') no-repeat top left; }
+.paginate_enabled_previous:hover { background: url('http://x10powered.com/errors/404.shtml') no-repeat top left; }
+.paginate_disabled_previous { background: url('http://x10powered.com/errors/404.shtml') no-repeat top left; }
+
+.paginate_enabled_next { background: url('http://x10powered.com/errors/404.shtml') no-repeat top right; }
+.paginate_enabled_next:hover { background: url('http://x10powered.com/errors/404.shtml') no-repeat top right; }
+.paginate_disabled_next { background: url('http://x10powered.com/errors/404.shtml') no-repeat top right; }
+
+/* Full number pagination */
+
+.paging_full_numbers a:active {
+	outline: none
+}
+.paging_full_numbers a:hover {
+	text-decoration: none;
+}
+
+.paging_full_numbers a.paginate_button,
+.paging_full_numbers a.paginate_active {
+	border: 1px solid #aaa;
+	padding: 2px 20px;
+	margin: 0 3px;
+	cursor: pointer;
+	color: #333 !important;
+}
+
+.paging_full_numbers a.paginate_button {
+	background-color: #ddd;
+}
+
+.paging_full_numbers a.paginate_button:hover {
+	background-color: #ccc;
+	text-decoration: none !important;
+}
+
+.paging_full_numbers a.paginate_active {
+	background-color: #99B3FF;
+}
+
+
+/*
+ * Processing indicator
+ */
+.dataTables_processing {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 250px;
+	height: 30px;
+	margin-left: -125px;
+	margin-top: -15px;
+	padding: 14px 0 2px 0;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 14px;
+	background-color: white;
+}
+
+
+table.dataTable th:active {
+	outline: none;
+}
+
+/*
+ * Scrolling
+ */
+.dataTables_scroll {
+	clear: both;
+}
+
+.dataTables_scrollBody {
+	margin-top: -1px;
+}
+
+
+/*
+==============================================
+= ADMINITY TABLE & DATA TABLE CUSTOM STYLING =
+==============================================
+*/
+
+
+/* GENERAL */
+
+table thead tr {
+	background-image: url(../img/grad-overlay.png);
+	height: 30px; 
+}
+table thead th {
+	border-right: 1px solid #ccc;
+	color: #292929;
+	text-shadow: 0 1px 0 #fff;
+	font-size: 12px; 
+}
+table thead th:last-of-type { border-right: none; }
+table tbody {
+	border-top: 1px solid #bbb;
+	border-bottom: 1px solid #bbb;
+}
+table tr.odd { background-color: #fff; }
+table tr.even { background-color: #f6f6f6; }
+table td { padding: 7px 0px; border-right: 1px solid #ccc; }      /* 到此一游  */
+table tbody tr:hover { background-color: #ddd; }
+
+.display {
+	width: 100%;
+	text-align: center;
+	text-overflow:ellipsis;
+	overflow: hidden;
+	Word-break: break-all;
+
+}
+
+/* TOOLBAR */
+
+.fg-toolbar {
+	background: url(../img/grad-overlay.png) #eee;
+	border: none;
+	border-radius: 0 0 2px 2px;
+}
+.table-toolbar {
+	height: 40px;
+	border-bottom: 1px solid #ccc;
+	background: url(../img/grad-overlay.png) #eee;
+}
+.table-toolbar li {
+	height: 30px;
+	border-right: 1px solid #ccc;
+	float: left;
+}
+.table-toolbar li a {
+	color: #292929;
+	font-size: 12px;
+	position: relative;
+	top: 4px;
+	padding: 7px 10px;
+	text-shadow: 0 1px 0 #fff;
+}
+.table-toolbar img {
+	position: relative;
+	top: 3px;
+}
+
+/* WRAPPER AND CONTENT */
+
+.DataTables_sort_wrapper {
+	padding: 4px 0;
+	position: relative;
+}
+.DataTables_sort_wrapper span {
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+}
+
+.dataTables_wrapper {position: relative;}
+.dataTables_filter, .dataTables_length {
+	position: absolute;
+	top: -25px;
+	right: 8px;
+	display: inline-block;
+    color: #ddd;
+    height: 17px;
+}
+.dataTables_length {margin-right: 170px; }
+.table-toolbar + .dataTables_wrapper .dataTables_filter,
+.table-toolbar + .dataTables_wrapper .dataTables_length {
+	color: #292929;
+	text-shadow: 0 1px 0 #fff;
+	font-size: 12px;
+}
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_length {
+	color: #ddd;
+	text-shadow: 0 1px 0 #222;
+	font-size: 12px;
+}
+.dataTables_wrapper input {
+	padding: 1px !important;
+	box-shadow: none !important;
+}
+.dataTables_wrapper select {
+	padding: 0;
+	box-shadow: none !important;
+}
+.table-toolbar + .dataTables_wrapper.dataTables_filter input,
+.table-toolbar + .dataTables_wrapper.dataTables_length select {
+	background-color: #eee;
+	border: 1px solid #bbb;
+	border-radius: 2px;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+	background-color: #ddd;
+	border: 1px solid #bbb;
+	border-radius: 2px;
+}
+
+.dataTables_paginate .fg-button {
+	background: url(../img/grad-overlay-s.png) #ddd;
+	padding: 5px 7px;
+	font-weight: 400;
+	font-size: 10px;
+	color: #292929;
+	text-shadow: 0 1px 0 #eee;
+}
+.dataTables_paginate.paging_two_button { border: none !important; }
+.paging_two_button .fg-button {
+	background: url(../img/grad-overlay-s.png) #ddd;
+	padding: 2px 4px;
+	border: 1px solid #bbb;
+}
+.dataTables_paginate .fg-button:hover { background-color: #ccc; }
+.dataTables_paginate {
+	border: 1px solid #bbb;
+	border-radius: 2px;
+}
+
+/* For preventing interference with the jQuery Flot chart legends */
+
+.legendColorBox, .legendLabel { padding: 1px 2px; border: none; }
+
+/* self definition  */
+
+/* Login */
+.NO {width: 10%;}
+.Rank {width: 10%;}
+.Account {width: 10%;}
+.Type {width: 10%;}
+.IP {width: 20%;}
+.DateTime {width: 20%;}
+.Content {width: 20%;}
+
+/* System */
+.NO2 {width: 10%;}
+.Rank2 {width: 10%;}
+.Level2 {width: 10%;}
+.DateTime2 {width: 10%;}
+.Content2 {width: 60%;}
+
+/* Visit */
+.NO3 {width: 6%;}
+.Rank3 {width: 7%;}
+.Account3 {width: 10%;}
+.Page3 {width: 10%;}
+.IP3 {width: 10%;}
+.Status3 {width: 9%;}
+.LoginTime3 {width: 10%;}
+.LogoutTime3 {width: 10%;}
+.StayTime3 {width: 10%;}
+.SourcePage3 {width: 10%;}
+.Browser3 {width: 8%;}
+
+/* Linear */
+.NO4 {width: 5%;}
+.Rank4 {width: 5%;}
+.Account4 {width: 10%;}
+.IP4 {width: 15%;}
+.Time4 {width: 10%;}
+.CancerType4 {width: 10%;}
+.GeneName4 {width: 10%;}
+.DataType_X4 {width: 10%;}
+.DataType_Y4 {width: 10%;}
+.SampleType4 {width: 10%;}
+.IsLog4 {width: 5%;}
+
+/* Volcano */
+.NO5 {width: 10%;}
+.Rank5 {width: 10%;}
+.Account5 {width: 10%;}
+.IP5 {width: 15%;}
+.Time5 {width: 10%;}
+.CancerType5 {width: 10%;}
+.DataType5 {width: 10%;}
+
+/* Mountain */
+.NO6 {width: 5%;}
+.Rank6 {width: 10%;}
+.Account6 {width: 10%;}
+.IP6 {width: 15%;}
+.Time6 {width: 10%;}
+.CancerType6 {width: 10%;}
+.Chromosome6 {width: 10%;}
+.DataType6 {width: 10%;}
+.IsLog6 {width: 10%;}
+.ShowValue6 {width: 10%;}
+
+/* Login */
+.search_input{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:5px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+}
+.draw_input table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+}
+/* System */
+.search_input2{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input2 table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 0px;
+	margin:0;
+	width:100%;
+	text-align: center;
+
+}
+/* Visit */
+.search_input3{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input3 table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+
+}
+/* Linear */
+.search_input4{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input4 table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+
+}
+
+.search_input5{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input5 table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+
+}
+
+.search_input6{
+	height: inherit;
+	margin-bottom: 20px;
+}
+.search_input6 table{
+	background-color: #2c99f5;
+	border: 1px solid #ccc;
+	border-collapse:separate;
+	border-spacing:0px 5px;
+	margin:0;
+	width:100%;
+	text-align: center;
+
+}
+
+
+
+
+
+
+.column-chart{
+	display: none;
+}
+.angle{
+	margin: 0 auto;
+}
+.fugue-24.system-monitor{ background-position: -50px -1375px; }
+.fugue-24 {background: url(../img/icons/fugue/24px.png) no-repeat top left; width: 24px; height: 24px; }
+.box-icon-24 { margin: 6px 4px 0 6px; }
+

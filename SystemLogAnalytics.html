@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>SystemLog Analytics</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!---CSS Files-->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <!---jQuery Files-->
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-ui-1.8.17.min.js"></script>
+    <script src="js/styler.js"></script>
+    <script src="js/jquery.tipTip.js"></script>
+    <script src="js/colorpicker.js"></script>
+    <script src="js/sticky.full.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/flot/jquery.flot.min.js"></script>
+    <script src="js/flot/jquery.flot.pie.min.js"></script>
+    <script src="js/flot/jquery.flot.resize.min.js"></script>
+
+    <script src="js/LogShow.js"></script>
+    <script src="js/check.js"></script>
+    <script src="js/VisitCollect.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/log4javascript.js"></script>
+    <script src="js/log4jsService.js"></script>
+    <!---HighCharts-->
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/highcharts-3d.js"></script>
+    <!---Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!--- HEADER -->
+
+
+
+<div class="top-bar">
+    <ul id="nav">
+        <li>
+            <ul id="top-nav">
+                <li class="nav-item">
+                    <a href="tables.html"><img src="img/nav/tb.png" alt="" /><p>Login Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html"><img src="img/nav/anlt.png" alt="" /><p>LoginLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="SystemLog.html"><img src="img/nav/tb.png" alt="" /><p>System Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/anlt-active.png" alt="" /><p>SystemLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="VisitLog.html"><img src="img/nav/tb.png" alt="" /><p>Visit Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="VisitLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>VisitLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/tb.png" alt="" /><p>Operation Log</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLog.html">Linear</a></li>
+                        <li><a href="VolcanoLog.html">Volcano</a></li>
+                        <li><a href="MountainLog.html">Mountain</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/anlt.png" alt="" /><p>OperationLog Analytics</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLogAnalytics.html">Linear Analytics</a></li>
+                        <li><a href="VolcanoLogAnalytics.html">Volcano Analytics</a></li>
+                        <li><a href="MountainLogAnalytics.html">Mountain Analytics</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<!--- CONTENT AREA -->
+
+<div class="content container_12">
+    <div class="box grid_12 search_input2">
+        <table>
+            <tr>
+                <td>Select Level:</td>
+                <td>
+                    <select name="level" id="level">
+                        <option value=""></option>
+                        <option value ="Fatal">Fatal</option>
+                        <option value ="Error">Error</option>
+                        <option value ="Warn">Warn</option>
+                    </select>
+                </td>
+                <td>Select BeginDate:</td>
+                <td>
+                    <input type="date" name="beginDate" id="beginDate" value="1970-01-01" onblur="checkDate()">
+                </td>
+
+                <td>Select EndDate:</td>
+                <td>
+                    <input type="date" name="endDate" id="endDate" onblur="checkDate()">
+                </td>
+
+                <td>
+                    <button id="showCharts" class="input-head">Search</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="box grid_6">
+        <div class="box-head"><span class="box-icon-24 fugue-24 counter"></span><h2>Line Chart</h2></div>
+        <div class="box-content">
+            <div id="flot-lines"></div>
+        </div>
+    </div>
+    <div class="box grid_12 draw_input">
+        <!--这个table的输入并不向后台发出请求，仅能对本图进行修改-->
+        <table>
+            <tr>
+                <td>Select what you want to analyze</td>
+                <td>
+                    <select id="pie-chart" name="pie-chart">
+                        <option value="Year">Year</option>
+                        <option value="Month">Month</option>
+                        <option value="Level">Level</option>
+                    </select>
+                    <select id="chartStyle" name="column-chart">
+                        <option value="Pie">Pie</option>
+                        <option value="Column">Column</option>
+                    </select>
+                </td>
+                <td>
+                    <button id="showCharts2" class="input-head">Draw</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="box grid_6">
+        <div class="box-head"><h2>Pie Chart</h2></div>
+        <div class="box-content">
+            <div id="flot-pie"></div>
+            <div id="sliders" class="column-chart">
+                <table class="angle">
+                    <tr>
+                        <td>α 角（内旋转角）</td>
+                        <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>β 角（外旋转角）</td>
+                        <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>深度</td>
+                        <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer container_12">
+    <p class="grid_12">Powered by ClickGwas</p>
+</div>
+
+</body>
+</html>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    var cip = returnCitySN["cip"];
+    var city = returnCitySN["cname"];
+    city=isChinese(city);
+</script>
+<script>
+    var args;
+    function collectArgs() {
+        addCookie("token","122334234fsdafdsf",1);
+        var token = getCookie("token");   //  在本地中禁止获取cookies，所以先用字符串代替
+        token = "122334234fsdafdsf";
+
+        var beginDate = ChangeIntoMilliSeconds($("#beginDate").val());
+        var endDate = ChangeIntoMilliSeconds($("#endDate").val());
+        var level = $("#level").val()
+
+        var originArgs=[level,beginDate,endDate,token];
+        return originArgs;
+    }
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            var type = "charts";    //   用来标识绘制图的类型
+            args=collectArgs();
+            args.unshift(type);
+            log.Operate.getLogData(args);
+        }
+    };
+    $("#showCharts").click(function () {
+        var type = "charts";    //   用来标识绘制图的类型
+        args=collectArgs();
+        args.unshift(type);
+        log.Operate.getLogData(args);
+    });
+    $("#showCharts2").click(function () {
+        var type = "pie";    //   用来标识绘制图的类型
+        args=collectArgs();
+        args.unshift(type);
+        log.Operate.getLogData(args);
+    });
+</script>
+

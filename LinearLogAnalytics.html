@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>LinearLog Analytics</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <!---CSS Files-->
+    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/tables.css">
+    <!---jQuery Files-->
+    <script src="js/jquery-1.7.1.min.js"></script>
+    <script src="js/jquery-ui-1.8.17.min.js"></script>
+    <script src="js/styler.js"></script>
+    <script src="js/jquery.tipTip.js"></script>
+    <script src="js/colorpicker.js"></script>
+    <script src="js/sticky.full.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/flot/jquery.flot.min.js"></script>
+    <script src="js/flot/jquery.flot.pie.min.js"></script>
+    <script src="js/flot/jquery.flot.resize.min.js"></script>
+
+    <script src="js/check.js"></script>
+    <script src="js/LogShow.js"></script>
+    <script src="js/VisitCollect.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/log4javascript.js"></script>
+    <script src="js/log4jsService.js"></script>
+    <!---HighCharts-->
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+    <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <script src="https://img.hcharts.cn/highcharts/highcharts-3d.js"></script>
+    <!---Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="top-bar">
+    <ul id="nav">
+        <li>
+            <ul id="top-nav">
+                <li class="nav-item">
+                    <a href="LoginLog.html"><img src="img/nav/tb.png" alt="" /><p>Login Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="LoginLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>LoginLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="SystemLog.html"><img src="img/nav/tb.png" alt="" /><p>System Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="SystemLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>SystemLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="VisitLog.html"><img src="img/nav/tb.png" alt="" /><p>Visit Log</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="VisitLogAnalytics.html"><img src="img/nav/anlt.png" alt="" /><p>VisitLog Analytics</p></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/tb.png" alt="" /><p>Operation Log</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLog.html">Linear</a></li>
+                        <li><a href="VolcanoLog.html">Volcano</a></li>
+                        <li><a href="MountainLog.html">Mountain</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#"><img src="img/nav/anlt.png" alt="" /><p>OperationLog Analytics</p></a>
+                    <ul class="sub-nav">
+                        <li><a href="LinearLogAnalytics.html">Linear Analytics</a></li>
+                        <li><a href="VolcanoLogAnalytics.html">Volcano Analytics</a></li>
+                        <li><a href="MountainLogAnalytics.html">Mountain Analytics</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<!--- CONTENT AREA -->
+<div class="content container_12">
+    <div class="box grid_12 search_input4">
+        <table id="LinearLogChart">
+            <tr>
+                <td>Account:</td>
+                <td>
+                    <input type="text" name="account4" id="account" onBlur="checkAccount()">
+                </td>
+
+                <td>IP:&nbsp&nbsp <input type="text" name="ip4" id="ip" onblur="checkIP()">
+                </td>
+                <td>BeginDate:</td>
+                <td>
+                    <input type="date" name="beginDate4" id="beginDate" onblur="checkDate()">
+                </td>
+                <td>
+                    EndDate:&nbsp&nbsp
+                </td>
+                <td>
+                    <input type="date" name="endDate4" id="endDate" onblur="checkDate()">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select name="cancerType4" id="cancerType" >
+                        <option value="">-CancerType-</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="dataType4" id="dataType">
+                        <option value="">-dataType-X-</option>
+                        <option value="e">mRNA expression</option>
+                        <option value="c">Copy number variations</option>
+                        <option value="m">Methylation values</option>
+                        <option value="mu">mutations</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="dataType24" id="dataType2">
+                        <option value="">-dataType-Y-</option>
+                        <option value="e">mRNA expression</option>
+                        <option value="c">Copy number variations</option>
+                        <option value="m">Methylation values</option>
+                        <option value="mu">mutations</option>
+                    </select>
+                </td>
+                <td>
+                    <select name="sampleType4" id="sampleType">
+                        <option value="">-SampleType-</option>
+                        <option value="t">Tumor</option>
+                        <option value="n">Normal</option>
+                    </select>
+                </td>
+                <td>
+                    <!--这个SQL语句要模糊查询！！-->
+                    <input type="text" name="geneName4" id="geneName" tipMsg="基因名：如，AQP7P1" >
+                </td>
+                <td>
+                    <select name="isLog4" id="isLog">
+                        <option value="">-log-</option>
+                        <option value="l">Yes</option>
+                        <option value="y">No</option>
+                    </select>
+                </td>
+                <td>
+                    <button id="showCharts" class="input-head">Search</button>
+                </td>
+            </tr>
+        </table>
+        <!--默认灰色框-->
+        <script>
+            $(function(){
+                inputTipText();  //初始化Input的灰色提示信息
+            });
+        </script>
+    </div>
+    <div class="box grid_6">
+        <div class="box-head"><h2>Line Chart</h2></div>
+        <div class="box-content">
+            <div id="flot-lines"></div>
+        </div>
+    </div>
+    <div class="box grid_12 draw_input">
+        <!--这个table的输入并不向后台发出请求，仅能对本图进行修改-->
+        <table>
+            <tr>
+                <td>Select what you want to analyze</td>
+                <td>
+                    <select id="pie-chart" name="pie-chart">
+                        <!--<option value=""></option>-->
+                        <option value="Year">Year</option>
+                        <option value="Month">Month</option>
+                        <option value="Hour">Hour</option>
+                        <option value="Account">Account</option>
+                        <option value="IP">IP</option>
+                        <option value="GeneName">GeneName</option>
+                        <option value="CancerType">CancerType</option>
+                        <option value="DataType_X">DataType_X</option>
+                        <option value="DataType_Y">DataType_Y</option>
+                        <option value="SampleType">SampleType</option>
+                        <option value="IsLog">IsLog</option>
+                    </select>
+                    <select id="chartStyle" name="column-chart">
+                        <option value="Pie">Pie</option>
+                        <option value="Column">Column</option>
+                    </select>
+                </td>
+                <td>
+                    <button id="showCharts2" class="input-head">Draw</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="box grid_6">
+        <div class="box-head"><h2>Pie Chart</h2></div>
+        <div class="box-content">
+            <div id="flot-pie"></div>
+            <div id="sliders" class="column-chart">
+                <table class="angle">
+                    <tr>
+                        <td>α 角（内旋转角）</td>
+                        <td><input id="alpha" type="range" min="0" max="45" value="15"/> <span id="alpha-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>β 角（外旋转角）</td>
+                        <td><input id="beta" type="range" min="-45" max="45" value="15"/> <span id="beta-value" class="value"></span></td>
+                    </tr>
+                    <tr>
+                        <td>深度</td>
+                        <td><input id="depth" type="range" min="20" max="100" value="50"/> <span id="depth-value" class="value"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer container_12">
+    <p class="grid_12">Powered by ClickGwas</p>
+</div>
+</body>
+</html>
+
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script>
+    var cip = returnCitySN["cip"];
+    var city = returnCitySN["cname"];
+    city=isChinese(city);
+</script>
+<script>
+    //  这里也要实现向后台提交数据
+    function collectArgs() {
+        addCookie("token","122334234fsdafdsf",1);
+        var token = getCookie("token");   //  在本地中禁止获取cookies，所以先用字符串代替
+        token = "122334234fsdafdsf";
+
+        var account = $("#account").val().trim();
+        var ip = $("#ip").val().trim();
+        var beginDate = ChangeIntoMilliSeconds($("#beginDate").val());
+        var endDate = ChangeIntoMilliSeconds($("#endDate").val());
+        var cancerType = $("#cancerType").val();
+        var sampleType = $("#sampleType").val();
+        var dataType = $("#dataType").val();
+        var dataType2 = $("#dataType2").val();
+        var geneName = ($("#geneName").val().trim()=="基因名：如，AQP7P1")?"":$("#geneName").val().trim();
+        var isLog = $("#isLog").val();
+
+        var originArgs=[account,ip,beginDate,endDate,cancerType,geneName,dataType,dataType2,sampleType,isLog,token];
+        return originArgs;
+    }
+    document.onkeydown = function (event) {
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+        if (e && e.keyCode == 13) {
+            var type = "charts";    //   用来标识绘制图的类型
+            args=collectArgs();
+            args.unshift(type);
+            log.Operate.getLogData(args);
+        }
+    };
+    $("#showCharts").click(function () {
+        var type = "charts";    //   用来标识绘制图的类型
+        args=collectArgs();
+        args.unshift(type);
+        log.Operate.getLogData(args);
+    });
+    $("#showCharts2").click(function () {
+        var type = "pie";    //   用来标识绘制图的类型
+        args=collectArgs();
+        args.unshift(type);
+        log.Operate.getLogData(args);
+    });
+
+</script>
+<script>
+    for (var i = 0; i < cancer_arr.length; i++) {
+        var r = /\[(.+?)\]/;       //正则获取方括号内容并转为小写
+        $("#cancerType").append("<option value='" + cancer_arr[i].match(r)[1].toLowerCase() + "'>" + cancer_arr[i].match(r)[1].toLowerCase() + "</option>");
+    }
+</script>
+
